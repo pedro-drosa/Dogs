@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './styles.module.css';
 
 const Button = ({ children, ...props }) => (
