@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import { UserContextProvider } from './context/userContext';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 
@@ -9,12 +11,14 @@ import Footer from './components/Footer';
 const App = () => (
   <div>
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login/*" element={<Login />} />
-      </Routes>
-      <Footer />
+      <UserContextProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login/*" element={<Login />} />
+        </Routes>
+        <Footer />
+      </UserContextProvider>
     </BrowserRouter>
   </div>
 );
