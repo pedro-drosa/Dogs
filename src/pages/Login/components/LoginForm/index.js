@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import useForm from '../../../../hooks/useForm';
@@ -33,6 +34,11 @@ const LoginForm = () => {
       getUser(json.token);
     }
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('@Dogs');
+    if (token) getUser(token);
+  }, []);
 
   return (
     <section>
