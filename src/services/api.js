@@ -11,6 +11,14 @@ export function TOKEN_POST(body) {
   };
 }
 
-export function USER_GET() {
-  return true;
+export function USER_GET(token) {
+  return {
+    url: `${process.env.REACT_APP_API_URL}/api/user`,
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
 }

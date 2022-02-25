@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import useForm from '../../../../hooks/useForm';
-import { TOKEN_POST } from '../../../../services/api';
+import { TOKEN_POST, USER_GET } from '../../../../services/api';
 
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
@@ -10,18 +10,27 @@ const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
-  const { url, options } = TOKEN_POST({
-    username: username.value,
-    password: password.value,
-  });
+  async function getUser(token) {
+    const { url, options } = USER_GET(token);
+
+    const response = await fetch(url, options);
+    const json = await response.json();
+    console.log(json);
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     if (username.validate() && password.validate()) {
+      const { url, options } = TOKEN_POST({
+        username: username.value,
+        password: password.value,
+      });
+
       const response = await fetch(url, options);
       const json = await response.json();
       window.localStorage.setItem('@Dogs', json.token);
+      getUser(json.token);
     }
   }
 
