@@ -58,6 +58,8 @@ export const UserContextProvider = ({ children }) => {
           const response = await fetch(url, options);
           if (!response.ok) throw new Error('Token inválido');
           await getUser(token);
+        } else {
+          setAuthenticated(false);
         }
       } catch (err) {
         logOut();
