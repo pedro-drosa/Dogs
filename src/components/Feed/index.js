@@ -1,3 +1,11 @@
-const Feed = () => <div>Feed</div>;
+import FeedModal from './FeedModal';
+import FeedPhotos from './FeedPhotos';
+
+const Feed = () => (
+  <div>
+    <FeedModal />
+    <FeedPhotos />
+  </div>
+);
 
 export default Feed;

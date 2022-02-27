@@ -53,6 +53,10 @@ a {
   margin: 0 auto;
 }
 
+.mainContainer {
+  margin-top: 4rem;
+}
+
 .animeLeft {
   opacity: 1;
   transform: translateX(-20px);
