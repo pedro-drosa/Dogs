@@ -9,14 +9,13 @@ import Loading from '../../Loading';
 
 import styles from './styles.module.css';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data: photos, loading, error, request } = useFetch();
 
   useEffect(() => {
     async function fetchPhotos() {
       const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
       const { response, json } = await request(url, options);
-      console.log(json);
     }
     fetchPhotos();
   }, [request]);
@@ -28,7 +27,11 @@ const FeedPhotos = () => {
     return (
       <ul className={`${styles.feed} animeLeft`}>
         {photos.map((photo) => (
-          <FeedPhotosItem key={photo.id} photo={photo} />
+          <FeedPhotosItem
+            key={photo.id}
+            photo={photo}
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </ul>
     );
