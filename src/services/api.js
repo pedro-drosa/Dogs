@@ -61,9 +61,9 @@ export function PHOTO_POST(formData, token) {
   };
 }
 
-export function PHOTOS_GET({ page, total, user }) {
+export function PHOTO_GET(id) {
   return {
-    url: `${process.env.REACT_APP_API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
+    url: `${process.env.REACT_APP_API_URL}/api/photo/${id}`,
     options: {
       method: 'GET',
       cache: 'no-store',
@@ -71,9 +71,21 @@ export function PHOTOS_GET({ page, total, user }) {
   };
 }
 
-export function PHOTO_GET(id) {
+export function PHOTO_DELETE(id, token) {
   return {
     url: `${process.env.REACT_APP_API_URL}/api/photo/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+}
+
+export function PHOTOS_GET({ page, total, user }) {
+  return {
+    url: `${process.env.REACT_APP_API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
     options: {
       method: 'GET',
       cache: 'no-store',
