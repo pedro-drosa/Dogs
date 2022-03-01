@@ -6,6 +6,8 @@ import Error from '../../Error';
 
 import { ReactComponent as SendSvg } from '../../../assets/enviar.svg';
 
+import styles from './styles.module.css';
+
 const PhotoCommentsForm = ({ id, setAllComments }) => {
   const [comment, setComment] = useState('');
 
@@ -24,15 +26,16 @@ const PhotoCommentsForm = ({ id, setAllComments }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <textarea
+        className={styles.textArea}
         id="comment"
         name="comment"
         value={comment}
         placeholder="Comente..."
         onChange={({ target }) => setComment(target.value)}
       />
-      <button>
+      <button className={styles.button}>
         <SendSvg />
       </button>
       <Error error={error} />
