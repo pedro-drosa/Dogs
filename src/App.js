@@ -15,25 +15,27 @@ import Photo from './components/Photo';
 import ProtectedRoute from './utils/ProtectedRoute';
 
 const App = () => (
-  <div>
+  <div className="App">
     <BrowserRouter>
       <UserContextProvider>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login/*" element={<Login />} />
-          <Route
-            path="conta/*"
-            element={
-              <ProtectedRoute>
-                <User />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="foto/:id" element={<Photo />} />
-          <Route path="perfil/:user" element={<Profile />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <main className="AppBody">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login/*" element={<Login />} />
+            <Route
+              path="conta/*"
+              element={
+                <ProtectedRoute>
+                  <User />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="foto/:id" element={<Photo />} />
+            <Route path="perfil/:user" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
         <Footer />
       </UserContextProvider>
     </BrowserRouter>
