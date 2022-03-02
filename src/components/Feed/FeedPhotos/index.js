@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect } from 'react';
 import { PHOTOS_GET } from '../../../services/api';
 import useFetch from '../../../hooks/useFetch';
@@ -9,16 +8,22 @@ import Loading from '../../Loading';
 
 import styles from './styles.module.css';
 
-const FeedPhotos = ({ setModalPhoto }) => {
+const FeedPhotos = ({ user, page, setModalPhoto, setFetchData }) => {
   const { data: photos, loading, error, request } = useFetch();
 
   useEffect(() => {
     async function fetchPhotos() {
-      const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
+      const totalItems = 3;
+      const { url, options } = PHOTOS_GET({ page, total: 3, user });
       const { response, json } = await request(url, options);
+
+      if (response && response.ok && json.length < totalItems) {
+        setFetchData(false);
+      }
     }
+
     fetchPhotos();
-  }, [request]);
+  }, [request, user, setFetchData]);
 
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
