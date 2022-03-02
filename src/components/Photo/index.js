@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -27,7 +26,7 @@ const Photo = () => {
       {loading && <Loading />}
       {data && (
         <section className="container mainContainer">
-          <PhotoContent data={data} single="single" />
+          <PhotoContent single data={data} />
         </section>
       )}
       <Error error={error} />

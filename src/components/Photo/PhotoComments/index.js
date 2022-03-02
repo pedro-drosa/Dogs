@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useContext, useState, useRef, useEffect } from 'react';
 import { userContext } from '../../../context/userContext';
 
@@ -28,11 +27,7 @@ const PhotoComments = ({ id, comments, single }) => {
         ))}
       </ul>
       {authenticated && (
-        <PhotoCommentsForm
-          single="single"
-          id={id}
-          setAllComments={setAllComments}
-        />
+        <PhotoCommentsForm single id={id} setAllComments={setAllComments} />
       )}
     </>
   );
