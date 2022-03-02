@@ -8,6 +8,7 @@ import User from './pages/User';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Photo from './components/Photo';
 
 import ProtectedRoute from './utils/ProtectedRoute';
 
@@ -27,6 +28,7 @@ const App = () => (
               </ProtectedRoute>
             }
           />
+          <Route path="foto/:id" element={<Photo />} />
         </Routes>
         <Footer />
       </UserContextProvider>
