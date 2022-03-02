@@ -106,3 +106,29 @@ export function COMMENT_POST(id, token, body) {
     },
   };
 }
+
+export function PASSWORD_LOST(body) {
+  return {
+    url: `${process.env.REACT_APP_API_URL}/api/password/lost`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function PASSWORD_RESET(body) {
+  return {
+    url: `${process.env.REACT_APP_API_URL}/api/password/reset`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

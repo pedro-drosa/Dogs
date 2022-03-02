@@ -91,3 +91,7 @@ a {
   border-radius: 0.2rem;
   z-index: -1;
 }
+
+.success {
+  color: #4c1;
+}
