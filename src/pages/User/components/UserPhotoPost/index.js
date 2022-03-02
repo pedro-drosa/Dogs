@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useForm from '../../../../hooks/useForm';
 import useFetch from '../../../../hooks/useFetch';
+import Head from '../../../../utils/Head';
 
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
@@ -50,6 +51,7 @@ const UserPhotoPost = () => {
 
   return (
     <section className={`${styles.photoPost} animeLeft`}>
+      <Head title="Poste sua foto" />
       <form onSubmit={handleSubmit}>
         <Input label="Nome" type="text" name="nome" {...name} />
         <Input label="Peso" type="number" name="peso" {...weight} />

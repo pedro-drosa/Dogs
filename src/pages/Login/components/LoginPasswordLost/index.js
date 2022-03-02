@@ -1,6 +1,8 @@
 import useFetch from '../../../../hooks/useFetch';
 import useForm from '../../../../hooks/useForm';
 
+import Head from '../../../../utils/Head';
+
 import { PASSWORD_LOST } from '../../../../services/api';
 
 import Input from '../../../../components/Input';
@@ -26,6 +28,7 @@ const LoginPasswordLost = () => {
 
   return (
     <section>
+      <Head title="Perdeu a Senha?" />
       <h1 className="title">Perdeu a senha?</h1>
       {data ? (
         <p className="success">{data}</p>

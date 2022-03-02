@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import Head from '../../utils/Head';
+
 import useFetch from '../../hooks/useFetch';
 import { PHOTO_GET } from '../../services/api';
 
@@ -26,6 +28,7 @@ const Photo = () => {
       {loading && <Loading />}
       {data && (
         <section className="container mainContainer">
+          <Head title={data.photo.title} />
           <PhotoContent single data={data} />
         </section>
       )}
