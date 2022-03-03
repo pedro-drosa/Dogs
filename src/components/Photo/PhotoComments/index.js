@@ -5,10 +5,12 @@ import PhotoCommentsForm from '../PhotoCommentsForm';
 
 import styles from './styles.module.css';
 
-const PhotoComments = ({ id, comments, single }) => {
+const PhotoComments = ({ id, comments }) => {
   const { authenticated } = useContext(userContext);
   const [allComments, setAllComments] = useState(() => comments);
   const commentsSection = useRef();
+
+  const IsSingle = !!window.location.pathname.includes('foto');
 
   useEffect(() => {
     commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
@@ -18,7 +20,7 @@ const PhotoComments = ({ id, comments, single }) => {
     <>
       <ul
         ref={commentsSection}
-        className={`${styles.comments} ${single ? styles.single : ''}`}>
+        className={`${styles.comments} ${IsSingle ? styles.single : ''}`}>
         {allComments.map((comment) => (
           <li key={comment.comment_ID}>
             <b>{comment.comment_author}: </b>
@@ -27,7 +29,11 @@ const PhotoComments = ({ id, comments, single }) => {
         ))}
       </ul>
       {authenticated && (
-        <PhotoCommentsForm single id={id} setAllComments={setAllComments} />
+        <PhotoCommentsForm
+          single={IsSingle}
+          id={id}
+          setAllComments={setAllComments}
+        />
       )}
     </>
   );
