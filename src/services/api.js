@@ -132,3 +132,15 @@ export function PASSWORD_RESET(body) {
     },
   };
 }
+
+export function STATS_GET(token) {
+  return {
+    url: `${process.env.REACT_APP_API_URL}/api/stats`,
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+}
